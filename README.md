@@ -1,24 +1,24 @@
-# tux-plymouth-theme
-╔═════════════════════════════════════════════════════════════════════════════════╗
-║ TUX 4 UBUNTU - TUX PLYMOUTH THEME                   © The Tux4Ubuntu Initiative ║
-║ – Let's bring Tux to Ubuntu                               http://tux4ubuntu.org ║
-╠═════════════════════════════════════════════════════════════════════════════════╣
-║                                                                                 ║
-║   Ubuntu is nice but it needs to TUXedo up with Tux! Through this Plymouth      ║
-║   theme you'll see Tux greet you at boot and shutdown.                          ║
-║                                                                                 ║
-║   Read more and support our cause at <http://tux4ubuntu.org>                    ║
-║                                                                                 ║
-╚═════════════════════════════════════════════════════════════════════════════════╝
+# Mycroft Plymouth theme
+
+Simple Mycroft theme based on the tux-plymouth-theme. Read more and support them at <http://tux4ubuntu.org>
 
 
-INSTALL INSTRUCTIONS
+## INSTALL INSTRUCTIONS
 
-    For the latest version and install instructions visit:
-    <http://tux4ubuntu.org>
+Clone the repository
 
+```sh
+git clone https://github.com/forslund/mycroft-plymouth-theme.git
+```
 
-CREDITS AND ATTRIBUTION
+Run the installation script
+
+```sh
+cd mycroft-plymouth-theme
+./install.sh
+```
+
+## CREDITS AND ATTRIBUTION
  
     THEME written and designed by:
         Tuxedo Joe (Josef Norlin) <http://github.com/tuxedojoe>. 
