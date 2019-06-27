@@ -1,0 +1,11 @@
+[Plymouth Theme]
+Name=mycroft-plymouth-theme
+Description=Mycroft Boot theme based on the Tux Plymouth theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/mycroft-plymouth-theme
+ScriptFile=/usr/share/plymouth/themes/mycroft-plymouth-theme/mycroft-plymouth-theme.script
+
+[script-env-vars]
+example_env_var=example env var value

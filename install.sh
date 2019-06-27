@@ -7,7 +7,7 @@ NC='\033[0m' # No Color
 
 function install {
     printf "\033c"
-    header "TUX PLYMOUTH THEME" "$1"
+    header "MYCROFT PLYMOUTH THEME" "$1"
     
     # Here we check if OS is supported
     # More info on other OSes regarding plymouth: http://brej.org/blog/?p=158
@@ -19,23 +19,23 @@ function install {
         DIR=${BASH_SOURCE}
         DIR=${DIR%"install.sh"}
         sudo cp -r $DIR/src /usr/share/plymouth/themes/
-        sudo rsync -a /usr/share/plymouth/themes/src/ /usr/share/plymouth/themes/tux-plymouth-theme/
-        #sudo mv /usr/share/plymouth/themes/src/ /usr/share/plymouth/themes/tux-plymouth-theme/
+        sudo rsync -a /usr/share/plymouth/themes/src/ /usr/share/plymouth/themes/mycroft-plymouth-theme/
+        #sudo mv /usr/share/plymouth/themes/src/ /usr/share/plymouth/themes/mycroft-plymouth-theme/
         sudo rm -r /usr/share/plymouth/themes/src
         # Then we can add it to default.plymouth and update update-initramfs accordingly
-        sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/tux-plymouth-theme/tux-plymouth-theme.plymouth 100;
+        sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/mycroft-plymouth-theme/mycroft-plymouth-theme.plymouth 100;
         printf "\033c"
-        header "TUX PLYMOUTH THEME" "$1"
-        printf "${YELLOW}Below you will see a list with all themes available to choose TUX in the\n"
-        printf "Plymouth menu next (if you want TUX that is ;)${NC}\n"
+        header "MYCROFT PLYMOUTH THEME" "$1"
+        printf "${YELLOW}Below you will see a list with all themes available to choose MYCROFT in the\n"
+        printf "Plymouth menu next (if you want MYCROFT that is ;)${NC}\n"
         echo ""
         read -n1 -r -p "Press any key to continue..." key
         sudo update-alternatives --config default.plymouth;
         printf "${YELLOW}Updating initramfs. This could take a while.${NC}\n"
         sudo update-initramfs -u;
         printf "\033c"
-        header "TUX PLYMOUTH THEME" "$1"
-        printf "${LIGHT_GREEN}TUX successfully moved in as your new Boot Logo.${NC}\n"
+        header "MYCROFT PLYMOUTH THEME" "$1"
+        printf "${LIGHT_GREEN}MYCROFT successfully moved in as your new Boot Logo.${NC}\n"
         echo ""
         printf "${YELLOW}Would you like to change the purple and orange in the lockscreen to black \nand grey (to better match your new Boot Logo?)${NC}\n"
         select yn in "Yes" "No"; do
@@ -54,7 +54,7 @@ function install {
 
     else
         printf "\033c"
-        header "TUX PLYMOUTH THEME" "$1"
+        header "MYCROFT PLYMOUTH THEME" "$1"
         printf "${LIGHT_RED}Couldn't find the Plymouth themes folder.${NC}\n"   
         echo "Check out our website for manual instructions where you can comment questions and solutions:"
         echo "https://tux4ubuntu.org"
@@ -69,8 +69,8 @@ function install {
 
 function uninstall { 
     printf "\033c"
-    header "TUX PLYMOUTH THEME" "$1"
-    printf "${LIGHT_RED}Really sure you want to uninstall TUX BOOT THEME from your boot screen"
+    header "MYCROFT PLYMOUTH THEME" "$1"
+    printf "${LIGHT_RED}Really sure you want to uninstall MYCROFT BOOT THEME from your boot screen"
     printf "(Plymouth)?${NC}\n"
     echo ""
     echo "(Type 1 or 2, then press ENTER)"            
@@ -78,10 +78,10 @@ function uninstall {
         case $yn in
             Yes ) 
                 printf "\033c"
-                header "TUX PLYMOUTH THEME" "$1"
-                sudo rm -rf /usr/share/plymouth/themes/tux-plymouth-theme
+                header "MYCROFT PLYMOUTH THEME" "$1"
+                sudo rm -rf /usr/share/plymouth/themes/mycroft-plymouth-theme
                 printf "\033c"
-                header "TUX PLYMOUTH THEME" "$1"
+                header "MYCROFT PLYMOUTH THEME" "$1"
                 echo "If you have more than one theme, choose below which one you want as default."
                 echo "on boot now when Tux is removed."
                 echo ""
@@ -93,13 +93,13 @@ function uninstall {
                 sudo sed -i 's_background: #000;_background: #2c001e url(resource:///org/gnome/shell/theme/noise-texture.png);_g' /usr/share/gnome-shell/theme/ubuntu.css
                 sudo sed -i 's_background-color: #2f343f;_background-color: #dd4814;_g' /usr/share/gnome-shell/theme/ubuntu.css
                 sudo sed -i 's_border-right: 2px solid #2f343f;_border-right: 2px solid #dd4814;_g' /usr/share/gnome-shell/theme/ubuntu.css
-                header "TUX PLYMOUTH THEME" "$1"
+                header "MYCROFT PLYMOUTH THEME" "$1"
                 echo "Tux is successfully removed from your boot."
-                printf "${LIGHT_GREEN}TUX Boot Logo theme is successfully uninstalled.${NC}\n"
+                printf "${LIGHT_GREEN}MYCROFT Boot Logo theme is successfully uninstalled.${NC}\n"
                 break;;
             No )
                 printf "\033c"
-                header "TUX PLYMOUTH THEME" "$1"
+                header "MYCROFT PLYMOUTH THEME" "$1"
                 echo "Awesome! Tux smiles and gives you a pat on the shoulder."
             break;;
         esac
@@ -138,7 +138,7 @@ function check_sudo {
     if sudo -n true 2>/dev/null; then 
         :
     else
-        printf "Oh, TUX will ask below about sudo rights to copy and install everything...\n\n"
+        printf "Oh, MYCROFT will ask below about sudo rights to copy and install everything...\n\n"
     fi
 }
 
@@ -160,7 +160,7 @@ do
     else
         STEPCOUNTER=true
     fi
-    header "TUX PLYMOUTH THEME" "$1"
+    header "MYCROFT PLYMOUTH THEME" "$1"
     # Menu system as found here: http://stackoverflow.com/questions/20224862/bash-script-always-show-menu-after-loop-execution
     cat<<EOF                                                       
 Type one of the following numbers/letters:         
