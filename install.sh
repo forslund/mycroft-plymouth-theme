@@ -27,31 +27,12 @@ function install {
         printf "\033c"
         header "MYCROFT PLYMOUTH THEME" "$1"
         printf "${YELLOW}Below you will see a list with all themes available to choose MYCROFT in the\n"
-        printf "Plymouth menu next (if you want MYCROFT that is ;)${NC}\n"
-        echo ""
-        read -n1 -r -p "Press any key to continue..." key
         sudo update-alternatives --config default.plymouth;
         printf "${YELLOW}Updating initramfs. This could take a while.${NC}\n"
         sudo update-initramfs -u;
         printf "\033c"
         header "MYCROFT PLYMOUTH THEME" "$1"
         printf "${LIGHT_GREEN}MYCROFT successfully moved in as your new Boot Logo.${NC}\n"
-        echo ""
-        printf "${YELLOW}Would you like to change the purple and orange in the lockscreen to black \nand grey (to better match your new Boot Logo?)${NC}\n"
-        select yn in "Yes" "No"; do
-            case $yn in
-                Yes ) echo "Making some of the purple go away."
-                    sudo sed -i 's_background: #2c001e url(resource:///org/gnome/shell/theme/noise-texture.png);_background: #000;_g' /usr/share/gnome-shell/theme/ubuntu.css
-                    sudo sed -i 's_background-color: #dd4814;_background-color: #2f343f;_g' /usr/share/gnome-shell/theme/ubuntu.css
-                    sudo sed -i 's_border-right: 2px solid #dd4814;_border-right: 2px solid #2f343f;_g' /usr/share/gnome-shell/theme/ubuntu.css
-                    printf "${LIGHT_GREEN}Done.${NC}\n"
-                    break;;
-                No ) echo "Purple stays."
-                    break;;
-            esac
-        done
-
-
     else
         printf "\033c"
         header "MYCROFT PLYMOUTH THEME" "$1"
@@ -152,38 +133,7 @@ function goto_tux4ubuntu_org {
     exit
 }
 
-while :
-do
-    clear
-    if [ -z "$1" ]; then
-        :
-    else
-        STEPCOUNTER=true
-    fi
-    header "MYCROFT PLYMOUTH THEME" "$1"
-    # Menu system as found here: http://stackoverflow.com/questions/20224862/bash-script-always-show-menu-after-loop-execution
-    cat<<EOF                                                       
-Type one of the following numbers/letters:         
-
-1) Install                                - Install Boot Logo theme          
-2) Uninstall                              - Uninstall Boot Logo theme
---------------------------------------------------------------------------------
-3) Read Instructions                      - Open up tux4ubuntu.org      
---------------------------------------------------------------------------------   
-Q) Skip                                   - Quit Boot Logo theme installer 
-
-(Press Control + C to quit the installer all together)
-EOF
-    read -n1 -s
-    case "$REPLY" in
-    "1")    install $1;;
-    "2")    uninstall $1;;
-    "3")    goto_tux4ubuntu_org;;
-    "S")    exit                      ;;
-    "s")    exit                      ;;
-    "Q")    exit                      ;;
-    "q")    exit                      ;;
-     * )    echo "invalid option"     ;;
-    esac
-    sleep 1
-done
+clear
+header "MYCROFT PLYMOUTH THEME" "$1"
+install $1
+sleep 1
